@@ -1,0 +1,3 @@
+.leaflet-control-attribution.leaflet-control > a:first-child > svg {
+    display: none !important;
+}
