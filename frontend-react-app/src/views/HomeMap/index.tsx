@@ -12,16 +12,16 @@ export default  function HomeMap(){
     const [positions, setPositions] = React.useState<Marker[]>([])
     React.useLayoutEffect(()=>{
         if (globalStore.data?.content){
-            
             let _positions = globalStore.data?.content.map(item=> {
                 let pos = Array.from(item.location.coordinates);
                 return {
+                    id: item.id,
                     text: item.applicant,
                     position: pos.reverse() as LatLngExpression
                 }
             })
             setPositions(_positions)
-            if (_positions.length > 0){
+            if (_positions.length > 0) {
                 globalStore.setCenterPos(_positions[0].position)
                 setCenter(_positions[0].position)
             }

@@ -10,7 +10,7 @@ const useFetchDocuments = () => {
         const fetchData = async () => {
             try {
                 globalStore.setLoadingStatus(true);
-                let url = `http://127.0.0.1:8080/api/documents?page=${globalStore.page}&size=${pageSize}`;
+                let url = `${import.meta.env.VITE_API_HOST}/api/documents?page=${globalStore.page}&size=${pageSize}`;
                 if (
                     globalStore.latitude !== undefined && 
                     globalStore.longitude !== undefined && 

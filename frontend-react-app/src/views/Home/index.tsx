@@ -2,7 +2,8 @@ import * as React from 'react';
 import { Map as LeafLetMap } from 'leaflet';
 import Info from '../Info';
 import useFetchDocuments from '../../hooks/useFetchFoodTrucks';
-import HomeMap from '../HomeMap';
+import Loading from '../../components/Loading';
+const HomeMap =  React.lazy(() => import('../HomeMap'));
 
 
 
@@ -19,7 +20,9 @@ export default function Home() {
                 </div>
       
                 <div className='w-3/5 h-full flex-1 p-4 bg-gray-100'>
-                    <HomeMap/>
+                    <React.Suspense fallback={<Loading />}>
+                        <HomeMap/>
+                    </React.Suspense>
                 </div>
             </div>
         </div>

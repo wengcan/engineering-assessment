@@ -17,6 +17,7 @@ import "./map.css";
 
 
 export interface Marker{
+    id: string
     text: string
     position: LatLngExpression
 }
@@ -58,7 +59,10 @@ const MyMap = ({center, positions}: MapProps, mapRef) =>  {
                 {
                     positions.map(pos=>{
                         return (
-                            <Marker position={pos.position}>
+                            <Marker 
+                                key={pos.id} 
+                                position={pos.position}
+                            >
                                 <Popup>
                                    {pos.text}
                                 </Popup>
