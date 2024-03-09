@@ -5,7 +5,7 @@ export default {
       '^.+\\.tsx?$': 'ts-jest',
     },
     rootDir: 'src',
-     moduleNameMapper: {
+    moduleNameMapper: {
        "\\.(css|less|sass|scss|gif|ttf|eot|svg|png)$": "identity-obj-proxy",
     }
 }

@@ -2,14 +2,12 @@ name: Build Backend and Frontend
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - 'v*'
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      VITE_API_HOST=http://127.0.0.1:8080
     steps:
     # Checkout the repository
     - name: Checkout Repository
@@ -41,18 +39,20 @@ jobs:
         npm install
         npm test
         npm run build
+      env:
+        VITE_API_HOST: http://127.0.0.1:8080        
 
     # Store artifacts
     - name: Store Backend JAR
       if: success()
       uses: actions/upload-artifact@v2
       with:
-        name: backend
-        path: backend/build/libs/*.jar
+        name: backend-spring-mongo-app
+        path: backend-spring-mongo-app/build/libs/*.jar
 
     - name: Store Frontend Build
       if: success()
       uses: actions/upload-artifact@v2
       with:
-        name: frontend
-        path: frontend/dist/
+        name: frontend-react-app
+        path: frontend-react-app/dist/
